@@ -5,6 +5,7 @@ import com.example.paris2024Back.domains.Match;
 import com.example.paris2024Back.dtos.MatchDTO;
 import com.example.paris2024Back.mappers.MatchMapper;
 import com.example.paris2024Back.repositories.MatchRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,6 +15,7 @@ public class MatchService {
     private MatchRepository matchRepo;
     private MatchMapper matchMapper;
 
+    @Autowired
     public MatchService(MatchRepository matchRepo, MatchMapper matchMapper) {
         this.matchRepo = matchRepo;
         this.matchMapper = matchMapper;
@@ -28,7 +30,7 @@ public class MatchService {
         }
     }
 
-    public List<MatchDTO> findAllUsers(){
+    public List<MatchDTO> findAllMatches(){
         return this.matchMapper.toDto(this.matchRepo.findAll());
     }
 

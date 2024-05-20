@@ -4,6 +4,7 @@ import com.example.paris2024Back.domains.User;
 import com.example.paris2024Back.dtos.UserDTO;
 import com.example.paris2024Back.mappers.UserMapper;
 import com.example.paris2024Back.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,6 +15,7 @@ public class UserService {
     private UserRepository userRepo;
     private UserMapper userMapper;
 
+    @Autowired
     public UserService(UserRepository userRepo, UserMapper userMapper) {
         this.userRepo = userRepo;
         this.userMapper = userMapper;
