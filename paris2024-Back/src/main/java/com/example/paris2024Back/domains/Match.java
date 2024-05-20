@@ -45,7 +45,7 @@ public class Match {
     @NotNull(message = "Start hour is required")
     @Min(value = 8, message = "Matches start from 8h")
     @Max(value = 24, message = "Matches start from 8h")
-    private LocalTime startHour;
+    private int startHour;
 
 
     @Column(name = "STADIUM_NAME", nullable = false)
@@ -86,7 +86,7 @@ public class Match {
     private double ticketPrice;
 
     @Builder
-    public Match(long id, Sports sportName, LocalTime startDate, LocalTime startHour, String stadiumName, List<String> discipline, long olympicNumOne, int freeSeats, List<Ticket> tickets, double ticketPrice) {
+    public Match(long id, Sports sportName, LocalTime startDate, int startHour, String stadiumName, List<String> discipline, long olympicNumOne, int freeSeats, List<Ticket> tickets, double ticketPrice) {
         this.id = id;
         this.sportName = sportName;
         this.startDate = startDate;

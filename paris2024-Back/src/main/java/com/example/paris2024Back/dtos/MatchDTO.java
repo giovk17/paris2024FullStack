@@ -39,7 +39,7 @@ public class MatchDTO {
     @NotNull(message = "Start hour is required")
     @Min(value = 8, message = "Matches start from 8h")
     @Max(value = 24, message = "Matches start from 8h")
-    private LocalTime startHour;
+    private int startHour;
 
 
 
@@ -79,7 +79,7 @@ public class MatchDTO {
     private double ticketPrice;
 
     @Builder
-    public MatchDTO(long id, Sports sportName, LocalTime startDate, LocalTime startHour, String stadiumName, List<String> discipline, long olympicNumOne, int freeSeats, List<Ticket> tickets, double ticketPrice ) {
+    public MatchDTO(long id, Sports sportName, LocalTime startDate, int startHour, String stadiumName, List<String> discipline, long olympicNumOne, int freeSeats, List<Ticket> tickets, double ticketPrice ) {
         this.id = id;
         this.sportName = sportName;
         this.startDate = startDate;
