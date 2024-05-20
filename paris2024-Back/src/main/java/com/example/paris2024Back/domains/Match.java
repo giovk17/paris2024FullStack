@@ -7,6 +7,8 @@ import jakarta.validation.constraints.*;
 import lombok.*;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 
@@ -23,7 +25,7 @@ public class Match {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "MATCH_ID")
-    private long id;
+    private Long id;
 
 
     @Column(name = "SPORT_NAME", nullable = false)
@@ -52,7 +54,7 @@ public class Match {
 
     @Column(name = "DISCIPLINE")
     @Size(max = 2, message = "Max 2 disciplines")
-    private String discipline;
+    private List<String> discipline;
 
 
     @Column(name = "OLYMPIC_NR_ONE")
@@ -61,8 +63,9 @@ public class Match {
     private long olympicNumOne;
 
 
-    @Setter(AccessLevel.NONE)
+
     @Column(name = "OLYMPIC_NR_TWO")
+    @Setter(AccessLevel.NONE)
     private long olympicNumTwo;
 
 
@@ -76,26 +79,38 @@ public class Match {
     @Max(value = 149 , message = "Ticket price must be between 0 and 150")
     @Column(name = "TICKET_PRICE")
 
+    @OneToMany(mappedBy = "match")
+    private List<Ticket> soldTickets;
+
     private double ticketPrice;
 
     @Builder
-    public Match(long id, String sportName, LocalTime startDate, LocalTime startHour, String stadiumName, String discipline, long olympicNumOne, int freeSeats, double ticketPrice) {
+    public Match(long id, String sportName, LocalTime startDate, LocalTime startHour, String stadiumName, List<String> discipline, long olympicNumOne, int freeSeats, List<Ticket> tickets, double ticketPrice) {
         this.id = id;
         this.sportName = sportName;
         this.startDate = startDate;
         this.startHour = startHour;
         this.stadiumName = stadiumName;
-        this.discipline = discipline;
+        this.discipline = discipline.isEmpty() ? new ArrayList<>(): discipline;
         this.olympicNumOne = olympicNumOne;
         this.olympicNumTwo = calculateOlympicNumTwo(this.olympicNumOne);
         this.freeSeats = freeSeats;
         this.ticketPrice = ticketPrice;
+        this.soldTickets = tickets.isEmpty() ? new ArrayList<>() : tickets;
+
     }
 
     private long calculateOlympicNumTwo(long olympicNumOne){
         long lowerBound = olympicNumOne - 1000;
         long upperBound = olympicNumOne + 1000;
         return ThreadLocalRandom.current().nextLong(lowerBound, upperBound);
+    }
+
+    public void purchaseTicket(Ticket ticket){
+        if(this.freeSeats > 0){
+            this.freeSeats -= 1;
+            this.soldTickets.add(ticket);
+        }
     }
 
 }
