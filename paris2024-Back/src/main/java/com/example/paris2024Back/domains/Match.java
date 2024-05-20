@@ -1,5 +1,6 @@
 package com.example.paris2024Back.domains;
 
+import com.example.paris2024Back.enums.Sports;
 import com.example.paris2024Back.interfaces.CheckStartDate;
 import com.example.paris2024Back.interfaces.OlympicNumOneConstraint;
 import jakarta.persistence.*;
@@ -27,10 +28,10 @@ public class Match {
     @Column(name = "MATCH_ID")
     private Long id;
 
-
+    @Enumerated(EnumType.STRING)
     @Column(name = "SPORT_NAME", nullable = false)
     @NotBlank(message = "Sport name is required")
-    private String sportName;
+    private Sports sportName;
 
 
     @Column(name = "START_DATE", nullable = false)
@@ -85,7 +86,7 @@ public class Match {
     private double ticketPrice;
 
     @Builder
-    public Match(long id, String sportName, LocalTime startDate, LocalTime startHour, String stadiumName, List<String> discipline, long olympicNumOne, int freeSeats, List<Ticket> tickets, double ticketPrice) {
+    public Match(long id, Sports sportName, LocalTime startDate, LocalTime startHour, String stadiumName, List<String> discipline, long olympicNumOne, int freeSeats, List<Ticket> tickets, double ticketPrice) {
         this.id = id;
         this.sportName = sportName;
         this.startDate = startDate;
@@ -106,7 +107,7 @@ public class Match {
         return ThreadLocalRandom.current().nextLong(lowerBound, upperBound);
     }
 
-    public void purchaseTicket(Ticket ticket){
+    public void sellTicket(Ticket ticket){
         if(this.freeSeats > 0){
             this.freeSeats -= 1;
             this.soldTickets.add(ticket);

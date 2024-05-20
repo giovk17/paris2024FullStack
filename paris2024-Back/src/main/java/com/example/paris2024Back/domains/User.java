@@ -40,5 +40,11 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Ticket> ownedTickets;
 
+    public void purchaseTicket(Ticket ticket){
+        if(!this.ownedTickets.contains(ticket)){
+            ownedTickets.add(ticket);
+        }
+    }
+
 
 }

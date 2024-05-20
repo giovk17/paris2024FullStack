@@ -1,6 +1,7 @@
 package com.example.paris2024Back.dtos;
 
 import com.example.paris2024Back.domains.Ticket;
+import com.example.paris2024Back.enums.Sports;
 import com.example.paris2024Back.interfaces.CheckStartDate;
 import com.example.paris2024Back.interfaces.OlympicNumOneConstraint;
 import jakarta.validation.constraints.*;
@@ -24,7 +25,7 @@ public class MatchDTO {
 
 
     @NotBlank(message = "Sport name is required")
-    private String sportName;
+    private Sports sportName;
 
 
 
@@ -78,7 +79,7 @@ public class MatchDTO {
     private double ticketPrice;
 
     @Builder
-    public MatchDTO(long id, String sportName, LocalTime startDate, LocalTime startHour, String stadiumName, List<String> discipline, long olympicNumOne, int freeSeats,List<Ticket> tickets, double ticketPrice ) {
+    public MatchDTO(long id, Sports sportName, LocalTime startDate, LocalTime startHour, String stadiumName, List<String> discipline, long olympicNumOne, int freeSeats, List<Ticket> tickets, double ticketPrice ) {
         this.id = id;
         this.sportName = sportName;
         this.startDate = startDate;
