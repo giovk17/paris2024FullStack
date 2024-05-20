@@ -20,7 +20,12 @@ public class MatchService {
     }
 
     public MatchDTO findById(Long matchId){
-        return this.matchMapper.toDto(this.matchRepo.findById(matchId).get());
+        MatchDTO selected = this.matchMapper.toDto(this.matchRepo.findById(matchId).get());
+        try {
+            return selected;
+        }catch (NullPointerException e){
+            throw new NullPointerException("Match with id " + matchId + " not found");
+        }
     }
 
     public List<MatchDTO> findAllUsers(){

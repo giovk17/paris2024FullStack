@@ -20,7 +20,12 @@ public class UserService {
     }
 
     public UserDTO findById(Long userId){
-        return this.userMapper.toDto(this.userRepo.findById(userId).get());
+       UserDTO selected = this.userMapper.toDto(this.userRepo.findById(userId).get());
+        try {
+            return selected;
+        }catch (NullPointerException e){
+            throw new NullPointerException("User with id " + userId + " not found");
+        }
     }
 
     public List<UserDTO> findAllUsers(){

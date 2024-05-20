@@ -22,7 +22,12 @@ public class TicketService {
     }
 
     public TicketDTO findByMatchIdAndUserId(Long matchId, Long userId){
-        return this.ticketMapper.toDto(this.ticketRepo.findByMatchIdAndUserId(matchId, userId));
+        TicketDTO selected =  this.ticketMapper.toDto(this.ticketRepo.findByMatchIdAndUserId(matchId, userId));
+        try {
+            return selected;
+        }catch (NullPointerException e){
+            throw new NullPointerException("Ticket not found");
+        }
     }
 
     public List<TicketDTO> findAllByMatchIdAndUserId(Long matchId, Long userId){
