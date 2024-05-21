@@ -7,7 +7,7 @@ import com.example.paris2024Back.interfaces.OlympicNumOneConstraint;
 import jakarta.validation.constraints.*;
 import lombok.*;
 
-import java.time.LocalTime;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -32,14 +32,14 @@ public class MatchDTO {
     @NotNull(message = "Start date is required")
     @FutureOrPresent(message = "Date should be in future or present")
     @CheckStartDate
-    private LocalTime startDate;
+    private LocalDate startDate;
 
 
 
     @NotNull(message = "Start hour is required")
     @Min(value = 8, message = "Matches start from 8h")
     @Max(value = 24, message = "Matches start from 8h")
-    private int startHour;
+    private Integer startHour;
 
 
 
@@ -55,12 +55,12 @@ public class MatchDTO {
 
     @NotNull(message = "Olympic nr one is required")
     @OlympicNumOneConstraint
-    private long olympicNumOne;
+    private Long olympicNumOne;
 
 
 
     @Setter(AccessLevel.NONE)
-    private long olympicNumTwo;
+    private Long olympicNumTwo;
 
 
 
@@ -79,7 +79,7 @@ public class MatchDTO {
     private double ticketPrice;
 
     @Builder
-    public MatchDTO(long id, Sports sportName, LocalTime startDate, int startHour, String stadiumName, List<String> discipline, long olympicNumOne, int freeSeats, List<Ticket> tickets, double ticketPrice ) {
+    public MatchDTO(long id, Sports sportName, LocalDate startDate, int startHour, String stadiumName, List<String> discipline, long olympicNumOne, int freeSeats, List<Ticket> tickets, double ticketPrice ) {
         this.id = id;
         this.sportName = sportName;
         this.startDate = startDate;

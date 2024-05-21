@@ -53,13 +53,14 @@ public class TicketService {
     }
 
     public void createTicket(TicketDTO ticketDTO){
-        User user = this.userRepository.findById(ticketDTO.getUser().getId()).orElseThrow(() -> new NullPointerException("User not found") );
-        Match match = this.matchRepository.findById(ticketDTO.getMatch().getId()).orElseThrow(() -> new NullPointerException("Match not found"));
-        Ticket ticket = this.ticketMapper.toTicket(ticketDTO);
+        User user = this.userRepository.findById(ticketDTO.getUser()).orElseThrow(() -> new NullPointerException("User not found") );
+        Match match = this.matchRepository.findById(ticketDTO.getMatch()).orElseThrow(() -> new NullPointerException("Match not found"));
+        Long ticketId = ticketDTO.getId();
+        Ticket ticket = new Ticket(ticketId, user, match);
 
-            this.ticketRepo.save(ticket);
-            user.purchaseTicket(ticket);
-            match.sellTicket(ticket);
+        this.ticketRepo.save(ticket);
+        user.purchaseTicket(ticket);
+        match.sellTicket(ticket);
 
 
     }

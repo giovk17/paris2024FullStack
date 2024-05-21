@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
 
-import java.time.LocalTime;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -38,14 +38,14 @@ public class Match {
     @NotNull(message = "Start date is required")
     @FutureOrPresent(message = "Date should be in future or present")
     @CheckStartDate
-    private LocalTime startDate;
+    private LocalDate startDate;
 
 
     @Column(name = "START_HOUR", nullable = false)
     @NotNull(message = "Start hour is required")
     @Min(value = 8, message = "Matches start from 8h")
     @Max(value = 24, message = "Matches start from 8h")
-    private int startHour;
+    private Integer startHour;
 
 
     @Column(name = "STADIUM_NAME", nullable = false)
@@ -61,13 +61,13 @@ public class Match {
     @Column(name = "OLYMPIC_NR_ONE")
     @NotNull(message = "Olympic nr one is required")
     @OlympicNumOneConstraint
-    private long olympicNumOne;
+    private Long olympicNumOne;
 
 
 
     @Column(name = "OLYMPIC_NR_TWO")
     @Setter(AccessLevel.NONE)
-    private long olympicNumTwo;
+    private Long olympicNumTwo;
 
 
     @Column(name = "FREE_SEATS")
@@ -86,7 +86,7 @@ public class Match {
     private double ticketPrice;
 
     @Builder
-    public Match(long id, Sports sportName, LocalTime startDate, int startHour, String stadiumName, List<String> discipline, long olympicNumOne, int freeSeats, List<Ticket> tickets, double ticketPrice) {
+    public Match(long id, Sports sportName, LocalDate startDate, int startHour, String stadiumName, List<String> discipline, long olympicNumOne, int freeSeats, List<Ticket> tickets, double ticketPrice) {
         this.id = id;
         this.sportName = sportName;
         this.startDate = startDate;
