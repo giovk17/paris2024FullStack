@@ -3,6 +3,7 @@ package com.example.paris2024Back.services;
 
 import com.example.paris2024Back.domains.Match;
 import com.example.paris2024Back.dtos.MatchDTO;
+import com.example.paris2024Back.enums.Sports;
 import com.example.paris2024Back.mappers.MatchMapper;
 import com.example.paris2024Back.repositories.MatchRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,10 @@ public class MatchService {
 
     public List<MatchDTO> findAllMatches(){
         return this.matchMapper.toDto(this.matchRepo.findAll());
+    }
+
+    public List<MatchDTO> findBySportName(Sports sportName){
+        return this.matchMapper.toDto(this.matchRepo.findBySportName(sportName));
     }
 
     public void createMatch(MatchDTO matchDTO){
