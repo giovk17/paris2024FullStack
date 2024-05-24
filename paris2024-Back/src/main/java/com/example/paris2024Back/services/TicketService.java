@@ -8,10 +8,11 @@ import com.example.paris2024Back.mappers.TicketMapper;
 import com.example.paris2024Back.repositories.MatchRepository;
 import com.example.paris2024Back.repositories.TicketRepo;
 import com.example.paris2024Back.repositories.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+@AllArgsConstructor
 @Service
 public class TicketService {
 
@@ -19,16 +20,6 @@ public class TicketService {
     private final MatchRepository matchRepository;
     private final UserRepository userRepository;
     private final TicketMapper ticketMapper;
-
-    public TicketService(TicketRepo ticketRepo, MatchRepository matchRepository, UserRepository userRepository, TicketMapper ticketMapper) {
-        this.ticketRepo = ticketRepo;
-        this.matchRepository = matchRepository;
-        this.userRepository = userRepository;
-        this.ticketMapper = ticketMapper;
-    }
-
-    @Autowired
-
 
     public List<TicketDTO> getAllTickets(){
         return this.ticketMapper.toDto(this.ticketRepo.findAll());
