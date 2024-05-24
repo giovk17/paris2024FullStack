@@ -23,12 +23,7 @@ public class MatchService {
     }
 
     public MatchDTO findById(Long matchId){
-        MatchDTO selected = this.matchMapper.toDto(this.matchRepo.findById(matchId).get());
-        try {
-            return selected;
-        }catch (NullPointerException e){
-            throw new NullPointerException("Match with id " + matchId + " not found");
-        }
+        return this.matchMapper.toDto(this.matchRepo.findById(matchId).orElseThrow(()-> new NullPointerException("Match with id " + matchId + " not found"))); 
     }
 
     public List<MatchDTO> findAllMatches(){
