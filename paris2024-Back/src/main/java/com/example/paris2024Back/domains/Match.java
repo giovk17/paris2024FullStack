@@ -86,18 +86,18 @@ public class Match {
     private double ticketPrice;
 
     @Builder
-    public Match(long id, Sports sportName, LocalDate startDate, int startHour, String stadiumName, List<String> discipline, long olympicNumOne, int freeSeats, List<Ticket> tickets, double ticketPrice) {
+    public Match(long id, Sports sportName, LocalDate startDate, int startHour, String stadiumName, List<String> discipline, long olympicNumOne, int freeSeats, List<Ticket> soldTickets, double ticketPrice) {
         this.id = id;
         this.sportName = sportName;
         this.startDate = startDate;
         this.startHour = startHour;
         this.stadiumName = stadiumName;
-        this.discipline = discipline.isEmpty() ? new ArrayList<>(): discipline;
+        this.discipline = discipline == null ? new ArrayList<>(): discipline;
         this.olympicNumOne = olympicNumOne;
         this.olympicNumTwo = calculateOlympicNumTwo(this.olympicNumOne);
         this.freeSeats = freeSeats;
         this.ticketPrice = ticketPrice;
-        this.soldTickets = tickets.isEmpty() ? new ArrayList<>() : tickets;
+        this.soldTickets = soldTickets.isEmpty() ? new ArrayList<>() : soldTickets;
 
     }
 

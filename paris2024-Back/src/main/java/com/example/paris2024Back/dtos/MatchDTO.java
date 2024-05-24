@@ -1,6 +1,5 @@
 package com.example.paris2024Back.dtos;
 
-import com.example.paris2024Back.domains.Ticket;
 import com.example.paris2024Back.enums.Sports;
 import com.example.paris2024Back.interfaces.CheckStartDate;
 import com.example.paris2024Back.interfaces.OlympicNumOneConstraint;
@@ -71,26 +70,23 @@ public class MatchDTO {
 
     @Min(value = 1, message = "Ticket price must be between 0 and 150")
     @Max(value = 149 , message = "Ticket price must be between 0 and 150")
-
-
-
-    private List<Ticket> soldTickets;
+    private List<TicketDTO> soldTickets;
 
     private double ticketPrice;
 
     @Builder
-    public MatchDTO(long id, Sports sportName, LocalDate startDate, int startHour, String stadiumName, List<String> discipline, long olympicNumOne, int freeSeats, List<Ticket> tickets, double ticketPrice ) {
+    public MatchDTO(long id, Sports sportName, LocalDate startDate, int startHour, String stadiumName, List<String> discipline, long olympicNumOne, int freeSeats, List<TicketDTO> soldTickets, double ticketPrice ) {
         this.id = id;
         this.sportName = sportName;
         this.startDate = startDate;
         this.startHour = startHour;
         this.stadiumName = stadiumName;
-        this.discipline = discipline.isEmpty() ? new ArrayList<>(): discipline;
+        this.discipline = discipline == null ? new ArrayList<>(): discipline;
         this.olympicNumOne = olympicNumOne;
         this.olympicNumTwo = calculateOlympicNumTwo(this.olympicNumOne);
         this.freeSeats = freeSeats;
         this.ticketPrice = ticketPrice;
-        this.soldTickets = tickets.isEmpty() ? new ArrayList<>() : tickets;
+        this.soldTickets = soldTickets.isEmpty() ? new ArrayList<>() : soldTickets;
 
     }
 

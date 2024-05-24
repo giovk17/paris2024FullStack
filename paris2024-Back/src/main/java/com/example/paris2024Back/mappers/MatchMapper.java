@@ -8,8 +8,15 @@ import java.util.List;
 
 @Component
 public class MatchMapper {
+
+    private final TicketMapper ticketMapper;
+
+    public MatchMapper(TicketMapper ticketMapper) {
+        this.ticketMapper = ticketMapper;
+    }
+
     public MatchDTO toDto(Match match){
-        return new MatchDTO(match.getId(), match.getSportName(), match.getStartDate(), match.getStartHour(), match.getStadiumName(),match.getDiscipline(), match.getOlympicNumOne(), match.getFreeSeats(), match.getSoldTickets(), match.getTicketPrice());
+        return new MatchDTO(match.getId(), match.getSportName(), match.getStartDate(), match.getStartHour(), match.getStadiumName(),match.getDiscipline(), match.getOlympicNumOne(), match.getFreeSeats(), this.ticketMapper.toDto(match.getSoldTickets()) , match.getTicketPrice());
     }
 
     public List<MatchDTO> toDto(List<Match> matches){
@@ -17,10 +24,10 @@ public class MatchMapper {
     }
 
     public Match toMatch(MatchDTO matchDto){
-        return new Match(matchDto.getId(), matchDto.getSportName(), matchDto.getStartDate(), matchDto.getStartHour(), matchDto.getStadiumName(),matchDto.getDiscipline(), matchDto.getOlympicNumOne(), matchDto.getFreeSeats(), matchDto.getSoldTickets(), matchDto.getTicketPrice());
+        return new Match(matchDto.getId(), matchDto.getSportName(), matchDto.getStartDate(), matchDto.getStartHour(), matchDto.getStadiumName(),matchDto.getDiscipline(), matchDto.getOlympicNumOne(), matchDto.getFreeSeats(),this.ticketMapper.toTicket(matchDto.getSoldTickets()) , matchDto.getTicketPrice());
     }
 
-    public List<Match> toTicket(List<MatchDTO> matchDTOS){
+    public List<Match> toMatch(List<MatchDTO> matchDTOS){
         return matchDTOS.stream().map(this::toMatch).toList();
     }
 }
