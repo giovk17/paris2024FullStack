@@ -28,4 +28,8 @@ public class UserService {
         User user = this.userMapper.toUser(userDTO);
         this.userRepo.save(user);
     }
+
+    public void deleteById(Long id){
+        this.userRepo.deleteById(id);
+    }
 }

@@ -1,0 +1,51 @@
+<div class="authWrapper">
+  <mat-card class="loginCard">
+    <mat-card-title class="mat-card-title">Login</mat-card-title>
+    <mat-card-content>
+      <form #authForm="ngForm" (ngSubmit)="submit(authForm)" class="innerCard">
+        <mat-form-field appearance="fill">
+          <mat-label>Username</mat-label>
+          <input
+            matInput
+            type="text"
+            name="userName"
+            id="name"
+            ngModel
+            required
+            #userName="ngModel"
+          />
+          <mat-error
+            *ngIf="userName.invalid && (userName.dirty || userName.touched)"
+          >
+            Username is required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            type="password"
+            name="password"
+            id="password"
+            ngModel
+            required
+            #password="ngModel"
+          />
+          <mat-error
+            *ngIf="password.invalid && (password.dirty || password.touched)"
+          >
+            Password is required
+          </mat-error>
+        </mat-form-field>
+        <button
+          mat-raised-button
+          type="submit"
+          [disabled]="authForm.invalid"
+          color="primary"
+        >
+          Login
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

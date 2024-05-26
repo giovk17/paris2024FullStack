@@ -35,4 +35,14 @@ public class MatchController {
         return this.matchService.findBySportName(sport);
     }
 
+    @PostMapping(path = "/create", consumes = "application/json", produces = "application/json")
+    public void createMatch(@RequestBody MatchDTO matchDTO){
+        this.matchService.createMatch(matchDTO);
+    }
+
+    @DeleteMapping(path = "/delete/{id}", consumes = "application/json")
+    public void deleteMatch(@PathVariable("id") long id){
+        this.matchService.deleteById(id);
+    }
+
 }

@@ -35,4 +35,13 @@ public class MatchService {
         this.matchRepo.save(match);
     }
 
+    public void deleteById(long id){
+        try {
+            this.matchRepo.deleteById(id);
+        }catch (NullPointerException e){
+            throw new NullPointerException("Match not found");
+        }
+
+    }
+
 }
