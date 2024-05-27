@@ -1,7 +1,7 @@
 INSERT INTO USERS (FULL_NAME, USERNAME, PASSWORD, USER_ROLE) VALUES
 ('John Doe', 'john_doe', 'password123', 'USER'),
 ('Jane Smith', 'jane_smith', 'password456', 'ADMIN'),
-('Giovanny', 'giovk', 'sudosudo', 'ADMIN');
+('Giovanny', 'giovk', 's', 'ADMIN');
 
 
 INSERT INTO MATCHES (SPORT_NAME, START_DATE, START_HOUR, STADIUM_NAME, OLYMPIC_NR_ONE, OLYMPIC_NR_TWO, FREE_SEATS, TICKET_PRICE) VALUES

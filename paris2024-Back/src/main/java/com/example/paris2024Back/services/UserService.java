@@ -32,4 +32,8 @@ public class UserService {
     public void deleteById(Long id){
         this.userRepo.deleteById(id);
     }
+
+    public UserDTO tempLogin(String username, String password){
+        return this.userMapper.toDto(this.userRepo.findByUserNameAndPassword(username,password));
+    }
 }

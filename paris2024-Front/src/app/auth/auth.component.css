@@ -9,7 +9,7 @@
 }
 
 .loginCard {
-  min-height: 50%;
+  min-height: 400px;
   aspect-ratio: 1.5/1;
   padding: 2rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -28,6 +28,11 @@
   flex-direction: column;
   justify-content: center;
   gap: 1rem;
+}
+
+.btnContainer {
+  display: flex;
+  justify-content: flex-end;
 }
 
 button {

@@ -25,6 +25,11 @@ public class UserController {
         return this.userService.findById(id);
     }
 
+    @GetMapping(path = "/{username}/{password}")
+    public UserDTO tempLogin(@PathVariable("username") String username, @PathVariable("password") String password){
+        return this.userService.tempLogin(username, password);
+    }
+
     @PostMapping(path = "/create", consumes = "application/json", produces = "application/json")
     public void createUser(@RequestBody UserDTO userDTO){
         this.userService.createUser(userDTO);
@@ -33,5 +38,5 @@ public class UserController {
     @DeleteMapping(path = "/delete/{id}", produces = "application/json")
     public void deleteById(@PathVariable("id") Long id){
             this.userService.deleteById(id);
-        }
+    }
 }

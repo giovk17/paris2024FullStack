@@ -12,9 +12,13 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MainComponent } from './main/main.component';
+import { NavComponent } from './nav/nav.component';
+import { SportsComponent } from './sports/sports.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
-  declarations: [AppComponent, AuthComponent],
+  declarations: [AppComponent, AuthComponent, MainComponent, NavComponent, SportsComponent, ProfileComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

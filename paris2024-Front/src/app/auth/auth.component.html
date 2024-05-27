@@ -37,14 +37,16 @@
             Password is required
           </mat-error>
         </mat-form-field>
-        <button
-          mat-raised-button
-          type="submit"
-          [disabled]="authForm.invalid"
-          color="primary"
-        >
-          Login
-        </button>
+        <div class="btnContainer">
+          <button
+            mat-raised-button
+            type="submit"
+            [disabled]="authForm.invalid"
+            color="primary"
+          >
+            Login
+          </button>
+        </div>
       </form>
     </mat-card-content>
   </mat-card>
