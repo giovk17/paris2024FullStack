@@ -1,4 +1,4 @@
-import { TicketDTO } from './ticket';
+import { TicketDTO } from './ticketDTO';
 
 export interface MatchDTO {
   id: number;
@@ -15,11 +15,11 @@ export interface MatchDTO {
 }
 
 export enum Sports {
-  SOCCER = 'Soccer',
-  BASKETBALL = 'Basketball',
-  POWERLIFTING = 'Powerlifting',
-  WEIGHTLIFTING = 'Weightlifting',
-  CYCLING = 'Cycling',
-  RUNNING = 'Running',
-  SWIMMING = 'Swimming',
+  SOCCER = 'SOCCER',
+  BASKETBALL = 'BASKETBALL',
+  POWERLIFTING = 'POWERLIFTING',
+  WEIGHTLIFTING = 'WEIGHTLIFTING',
+  CYCLING = 'CYCLING',
+  RUNNING = 'RUNNING',
+  SWIMMING = 'SWIMMING',
 }

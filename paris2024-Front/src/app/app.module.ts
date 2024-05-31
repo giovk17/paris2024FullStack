@@ -12,13 +12,24 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
 import { MainComponent } from './main/main.component';
 import { NavComponent } from './nav/nav.component';
 import { SportsComponent } from './sports/sports.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AuthRoutingService } from './services/auth.routing.service';
+import { MatchComponent } from './match/match.component';
 
 @NgModule({
-  declarations: [AppComponent, AuthComponent, MainComponent, NavComponent, SportsComponent, ProfileComponent],
+  declarations: [
+    AppComponent,
+    AuthComponent,
+    MainComponent,
+    NavComponent,
+    SportsComponent,
+    ProfileComponent,
+    MatchComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -29,8 +40,9 @@ import { ProfileComponent } from './profile/profile.component';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatTableModule,
   ],
-  providers: [],
+  providers: [AuthRoutingService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

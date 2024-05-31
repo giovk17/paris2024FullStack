@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DataService } from '../services/data.service';
 import { AuthService } from '../services/auth.service';
-import { UserDTO } from '../interfaces/user';
+import { UserDTO } from '../interfaces/userDTO';
 import { Router } from '@angular/router';
 
 @Component({
@@ -31,9 +31,9 @@ export class AuthComponent {
       });
   }
 
-  submit(form: NgForm) {
+  public submit(form: NgForm) {
     if (form.valid) {
-      this.login(form.value.userName, form.value.password);
+      this.login(form.value.userName.trim(), form.value.password.trim());
     }
   }
 }

@@ -21,7 +21,7 @@ public class UserController {
     }
 
     @GetMapping(path = "/{id}", produces = "application/json")
-    public UserDTO getById(@PathVariable("id") long id){
+    public UserDTO getById(@PathVariable("id") Long id){
         return this.userService.findById(id);
     }
 

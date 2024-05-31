@@ -1,1 +1,35 @@
-<p>REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE</p>
+<div class="wrapper">
+  <div class="sportsTableWrapper">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <!-- Sport Column -->
+      <ng-container matColumnDef="sport">
+        <th mat-header-cell *matHeaderCellDef>Sport</th>
+        <td mat-cell *matCellDef="let element">{{ element.sport }}</td>
+      </ng-container>
+
+      <!-- Amount Column -->
+      <ng-container matColumnDef="amount">
+        <th mat-header-cell *matHeaderCellDef>Current Matches</th>
+        <td mat-cell *matCellDef="let element">{{ element.amount }}</td>
+      </ng-container>
+
+      <!-- Date Column -->
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef>Next Date</th>
+        <td mat-cell *matCellDef="let element">{{ element.date }}</td>
+      </ng-container>
+
+      <tr
+        mat-header-row
+        *matHeaderRowDef="displayedColumns"
+        style="background-color: lightgray"
+      ></tr>
+      <tr
+        mat-row
+        *matRowDef="let row; columns: displayedColumns"
+        (click)="navigateToDetails(row.sport)"
+        class="rowStyle"
+      ></tr>
+    </table>
+  </div>
+</div>

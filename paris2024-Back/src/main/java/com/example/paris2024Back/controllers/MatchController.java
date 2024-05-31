@@ -41,7 +41,7 @@ public class MatchController {
     }
 
     @DeleteMapping(path = "/delete/{id}", consumes = "application/json")
-    public void deleteMatch(@PathVariable("id") long id){
+    public void deleteMatch(@PathVariable("id") Long id){
         this.matchService.deleteById(id);
     }
 

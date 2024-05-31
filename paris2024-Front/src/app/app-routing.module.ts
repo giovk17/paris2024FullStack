@@ -5,6 +5,7 @@ import { MainComponent } from './main/main.component';
 import { AuthGuard } from './guards/authGuard';
 import { SportsComponent } from './sports/sports.component';
 import { ProfileComponent } from './profile/profile.component';
+import { MatchComponent } from './match/match.component';
 
 const routes: Routes = [
   { path: 'login', component: AuthComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: 'sports', component: SportsComponent },
+      { path: 'sports/:{sport}', component: MatchComponent },
       { path: 'profile', component: ProfileComponent },
       { path: '', redirectTo: 'sports', pathMatch: 'full' },
     ],

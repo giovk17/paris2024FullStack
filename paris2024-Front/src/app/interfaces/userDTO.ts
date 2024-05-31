@@ -1,11 +1,11 @@
-import { TicketDTO } from './ticket';
+import { TicketDTO } from './ticketDTO';
 
 export interface UserDTO {
   id: number;
   name: string;
   username: string;
   password: string;
-  role: userRole;
+  userRole: userRole;
   ownedTickets: TicketDTO[];
 }
 export enum userRole {

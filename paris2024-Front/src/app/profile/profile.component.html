@@ -1,1 +1,32 @@
-<p>profile works!</p>
+<div class="profileWrapper">
+  <mat-card class="profileCard" *ngIf="showMode">
+    <mat-card-title style="border-bottom: 1px solid black"
+      >{{ currentUser.name }}
+    </mat-card-title>
+    <mat-card-content>
+      <ul class="profileContent">
+        <li>Username : {{ currentUser.userName }}</li>
+        <li>
+          Password : {{ hiddenPassword
+          }}<button
+            mat-button
+            style="margin-left: 1rem"
+            (click)="showPassword()"
+          >
+            show
+          </button>
+        </li>
+        <li>Role : {{ currentUser.userRole }}</li>
+      </ul>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="profileCard" *ngIf="!showMode">
+    <mat-card-title>{{ currentUser.name }} </mat-card-title>
+    <mat-card-content>
+      <form
+        #changeDetailsForm="ngForm"
+        (onSubmit)="changeDetails(changeDetailsForm)"
+      ></form>
+    </mat-card-content>
+  </mat-card>
+</div>
