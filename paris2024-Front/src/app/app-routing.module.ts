@@ -15,7 +15,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: 'sports', component: SportsComponent },
-      { path: 'sports/:{sport}', component: MatchComponent },
+      { path: 'sports/:sport', component: MatchComponent },
       { path: 'profile', component: ProfileComponent },
       { path: '', redirectTo: 'sports', pathMatch: 'full' },
     ],

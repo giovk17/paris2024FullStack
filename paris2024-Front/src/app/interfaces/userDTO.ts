@@ -9,6 +9,6 @@ export interface UserDTO {
   ownedTickets: TicketDTO[];
 }
 export enum userRole {
-  USER = 'User',
-  Admin = 'Admin',
+  USER = 'USER',
+  Admin = 'ADMIN',
 }

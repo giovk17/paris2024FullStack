@@ -37,7 +37,7 @@ public class MatchDTO {
 
     @NotNull(message = "Start hour is required")
     @Min(value = 8, message = "Matches start from 8h")
-    @Max(value = 24, message = "Matches start from 8h")
+    @Max(value = 24, message = "Matches cant start after 24h")
     private Integer startHour;
 
 

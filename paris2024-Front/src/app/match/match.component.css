@@ -1,0 +1,16 @@
+.wrapper {
+  display: grid;
+  place-items: center;
+}
+.matchTableWrapper {
+  height: 50%;
+  width: 60%;
+}
+
+.rowStyle {
+  cursor: pointer;
+}
+
+.rowStyle:hover {
+  background-color: whitesmoke;
+}

@@ -4,7 +4,7 @@ import { MatchDTO, Sports } from '../interfaces/matchDTO';
 import { MatchService } from '../services/match.service';
 import { Router } from '@angular/router';
 
-export interface rowData {
+export interface SportsrowData {
   sport: Sports;
   amount: number;
   date: string;
@@ -16,7 +16,7 @@ export interface rowData {
   styleUrls: ['./sports.component.css'],
 })
 export class SportsComponent implements OnInit {
-  public dataSource = new MatTableDataSource<rowData>([]);
+  public dataSource = new MatTableDataSource<SportsrowData>([]);
   public displayedColumns = ['sport', 'amount', 'date'];
 
   constructor(private matchService: MatchService, private router: Router) {}
@@ -24,7 +24,7 @@ export class SportsComponent implements OnInit {
   ngOnInit(): void {
     this.matchService.getAllMatches().subscribe({
       next: (matches) => {
-        const rows: rowData[] = Object.values(Sports).map((sport) => {
+        const rows: SportsrowData[] = Object.values(Sports).map((sport) => {
           return this.filterBySports(matches, sport);
         });
         this.dataSource.data = rows;
@@ -36,7 +36,10 @@ export class SportsComponent implements OnInit {
     this.router.navigate([`/main/sports/${sport}`]);
   }
 
-  private filterBySports(matches: MatchDTO[], sportName: Sports): rowData {
+  private filterBySports(
+    matches: MatchDTO[],
+    sportName: Sports
+  ): SportsrowData {
     let filtered = matches.filter((match) => match.sportName === sportName);
     let amount = filtered.length;
     let now = new Date();
