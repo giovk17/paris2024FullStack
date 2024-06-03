@@ -6,6 +6,7 @@ import { AuthGuard } from './guards/authGuard';
 import { SportsComponent } from './sports/sports.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MatchComponent } from './match/match.component';
+import { DetailComponent } from './detail/detail.component';
 
 const routes: Routes = [
   { path: 'login', component: AuthComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
     children: [
       { path: 'sports', component: SportsComponent },
       { path: 'sports/:sport', component: MatchComponent },
+      { path: 'sports/details/:id', component: DetailComponent },
       { path: 'profile', component: ProfileComponent },
       { path: '', redirectTo: 'sports', pathMatch: 'full' },
     ],

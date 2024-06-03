@@ -46,6 +46,7 @@
         mat-row
         *matRowDef="let row; columns: displayedColumns"
         class="rowStyle"
+        (click)="toDetails(row)"
       ></tr>
     </table>
   </div>

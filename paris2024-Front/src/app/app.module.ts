@@ -19,6 +19,7 @@ import { SportsComponent } from './sports/sports.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AuthRoutingService } from './services/auth.routing.service';
 import { MatchComponent } from './match/match.component';
+import { DetailComponent } from './detail/detail.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { MatchComponent } from './match/match.component';
     SportsComponent,
     ProfileComponent,
     MatchComponent,
+    DetailComponent,
   ],
   imports: [
     BrowserModule,

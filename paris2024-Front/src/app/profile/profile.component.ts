@@ -21,8 +21,6 @@ export class ProfileComponent {
     this.hiddenPassword = Array.from(this.passwordArr, () => '*').join('');
   }
 
-  private hidePw(p) {}
-
   showPassword() {
     if (this.pwShowMode) {
       this.hiddenPassword = this.currentUser.password;

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { AuthService } from '../services/auth.service';
 import { UserDTO, userRole } from '../interfaces/userDTO';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatchService } from '../services/match.service';
 import { MatchDTO, Sports } from '../interfaces/matchDTO';
 
@@ -36,6 +36,7 @@ export class MatchComponent implements OnInit {
   constructor(
     private auth: AuthService,
     private route: ActivatedRoute,
+    private router: Router,
     private matchService: MatchService
   ) {
     this.currentUser = this.auth.getUser();
@@ -60,6 +61,10 @@ export class MatchComponent implements OnInit {
     });
   }
 
+  public toDetails(row) {
+    this.router.navigate([`/main/sports/details/${row.ref.id}`]);
+  }
+
   public isAdmin() {
     return this.currentUser.userRole == userRole.Admin;
   }
@@ -74,9 +79,10 @@ export class MatchComponent implements OnInit {
       date: `${filteredArr.startDate} at ${filteredArr.startHour}h`,
       stadium: filteredArr.stadiumName,
       discipline: filteredArr.discipline ? ['N/A'] : filteredArr.discipline,
-      seats: filteredArr.freeSeats,
+      seats: filteredArr.freeSeats - filteredArr.soldTickets.length,
       price: filteredArr.ticketPrice,
       sold: filteredArr.soldTickets.length,
+      ref: filteredArr,
     };
   }
 }

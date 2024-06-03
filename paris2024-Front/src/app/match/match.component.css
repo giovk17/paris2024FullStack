@@ -1,6 +1,7 @@
 .wrapper {
   display: grid;
   place-items: center;
+  height: 50%;
 }
 .matchTableWrapper {
   height: 50%;
