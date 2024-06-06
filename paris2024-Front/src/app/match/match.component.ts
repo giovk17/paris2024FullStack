@@ -86,7 +86,6 @@ export class MatchComponent implements OnInit, OnDestroy {
   }
 
   private createRows(filteredArr: MatchDTO) {
-    console.log(filteredArr);
     return {
       date: `${filteredArr.startDate} at ${filteredArr.startHour}h`,
       stadium: filteredArr.stadiumName,

@@ -5,18 +5,27 @@
     </mat-card-title>
     <mat-card-content>
       <ul class="profileContent">
-        <li>Username : {{ currentUser.userName }}</li>
+        <li>USERNAME : {{ currentUser.userName }}</li>
         <li>
-          Password : {{ hiddenPassword
+          PASSWORD : {{ hiddenPassword
           }}<button
-            mat-button
-            style="margin-left: 1rem"
+            mat-flat-button
+            style="background-color: lightgray; margin-left: 1rem"
             (click)="showPassword()"
           >
             show
           </button>
         </li>
-        <li>Role : {{ currentUser.userRole }}</li>
+        <li>ROLE : {{ currentUser.userRole }}</li>
+        <li>
+          OWNED TICKETS : {{ currentUser.ownedTickets.length }}
+          <button
+            mat-flat-button
+            style="background-color: lightgray; margin-left: 1rem"
+          >
+            See All
+          </button>
+        </li>
       </ul>
     </mat-card-content>
   </mat-card>

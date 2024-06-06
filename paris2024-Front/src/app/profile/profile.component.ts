@@ -18,15 +18,14 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   private authSub: Subscription;
 
-  constructor(private auth: AuthService) {
-    this.passwordArr = this.currentUser.password.split('');
-    this.hiddenPassword = Array.from(this.passwordArr, () => '*').join('');
-  }
+  constructor(private auth: AuthService) {}
 
   ngOnInit(): void {
     this.authSub = this.auth.$user.subscribe({
       next: (user) => {
         this.currentUser = user;
+        this.passwordArr = this.currentUser.password.split('');
+        this.hiddenPassword = Array.from(this.passwordArr, () => '*').join('');
       },
       error: (err) => {
         console.error('User not found', err);
