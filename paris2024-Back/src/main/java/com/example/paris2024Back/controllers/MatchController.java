@@ -24,7 +24,12 @@ public class MatchController {
         return this.matchService.findAllMatches();
     }
 
-    @GetMapping(produces = "application/json", path = "/{sportName}")
+    @GetMapping(produces = "application/json", path = "/{id}")
+    public MatchDTO findMatchById(@PathVariable("id") Long id){
+        return this.matchService.findById(id);
+    }
+
+    @GetMapping(produces = "application/json", path = "/sports/{sportName}")
     public List<MatchDTO> findBySportName(@PathVariable("sportName") String sportName) {
         Sports sport;
         try {

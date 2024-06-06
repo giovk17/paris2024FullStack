@@ -1,0 +1,18 @@
+.detailWrapper {
+  display: grid;
+  place-items: center;
+  height: 50%;
+}
+
+.detailCard {
+  height: auto;
+  width: 40%;
+  padding: 1rem;
+}
+
+.innerContent {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}

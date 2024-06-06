@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatchDTO, Sports } from '../interfaces/matchDTO';
 import { MatchService } from '../services/match.service';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 export interface SportsrowData {
   sport: Sports;
@@ -15,14 +16,15 @@ export interface SportsrowData {
   templateUrl: './sports.component.html',
   styleUrls: ['./sports.component.css'],
 })
-export class SportsComponent implements OnInit {
+export class SportsComponent implements OnInit, OnDestroy {
   public dataSource = new MatTableDataSource<SportsrowData>([]);
   public displayedColumns = ['sport', 'amount', 'date'];
+  private matchSub: Subscription;
 
   constructor(private matchService: MatchService, private router: Router) {}
 
   ngOnInit(): void {
-    this.matchService.getAllMatches().subscribe({
+    this.matchSub = this.matchService.$matches.subscribe({
       next: (matches) => {
         const rows: SportsrowData[] = Object.values(Sports).map((sport) => {
           return this.filterBySports(matches, sport);
@@ -77,5 +79,9 @@ export class SportsComponent implements OnInit {
         date: `N/A`,
       };
     }
+  }
+
+  ngOnDestroy(): void {
+    this.matchSub.unsubscribe();
   }
 }

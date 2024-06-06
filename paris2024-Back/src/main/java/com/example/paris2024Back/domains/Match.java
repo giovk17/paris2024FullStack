@@ -107,11 +107,16 @@ public class Match {
         return ThreadLocalRandom.current().nextLong(lowerBound, upperBound);
     }
 
-    public void sellTicket(Ticket ticket){
+    public void sellTicket(Ticket ticket) throws Exception {
         if(this.freeSeats > 0){
-            this.freeSeats -= 1;
             this.soldTickets.add(ticket);
+        }else{
+            throw new Exception("Tickets sold out!");
         }
+    }
+
+    public void subtractSeats(){
+        this.freeSeats--;
     }
 
 }

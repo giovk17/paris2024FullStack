@@ -1,6 +1,5 @@
 package com.example.paris2024Back.dtos;
 
-import com.example.paris2024Back.domains.Ticket;
 import com.example.paris2024Back.enums.UserRole;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -31,5 +30,5 @@ public class UserDTO {
     private UserRole userRole;
 
 
-    private List<Ticket> ownedTickets;
+    private List<TicketDTO> ownedTickets;
 }

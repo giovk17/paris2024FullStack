@@ -1,1 +1,59 @@
-<p>detail works!</p>
+<div class="detailWrapper">
+  <mat-card class="detailCard">
+    <mat-card-title style="text-align: center">
+      <h1>MATCH : {{ currentMatch?.olympicNumOne }}</h1>
+    </mat-card-title>
+    <mat-card-content
+      style="
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        align-items: center;
+      "
+    >
+      <div class="matchDetails">
+        <ul class="innerContent">
+          <li>SPORT : {{ currentMatch?.sportName }}</li>
+          <li>STADIUM : {{ currentMatch?.stadiumName }}</li>
+          <li>
+            DATE : {{ currentMatch?.startDate }} at
+            {{ currentMatch?.startHour }}h
+          </li>
+          <li>TICKET PRICE : {{ currentMatch?.ticketPrice }}</li>
+          <li
+            *ngIf="isAdmin"
+            [style.font-weight]="currentMatch?.freeSeats === 0 ? '700' : '400'"
+          >
+            FREE SEATS : {{ currentMatch?.freeSeats }}
+          </li>
+          <li
+            *ngIf="isAdmin"
+            [style.font-weight]="
+              currentMatch?.soldTickets.length === 0 ? '700' : '400'
+            "
+          >
+            SOLD TICKETS : {{ currentMatch?.soldTickets.length }}
+          </li>
+        </ul>
+      </div>
+      <div class="ticketDetails" style="text-align: center">
+        <h3>Owned tickets : {{ ownedTickets.length }}</h3>
+        <div
+          class="ticketButtons"
+          style="display: flex; flex-direction: row; gap: 1rem"
+        >
+          <button
+            mat-flat-button
+            style="background-color: lightblue"
+            (click)="buyTicket()"
+          >
+            Buy
+          </button>
+          <button mat-flat-button style="background-color: lightgray">
+            See All
+          </button>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -29,7 +29,7 @@ public class TicketMapper {
     }
 
     public Ticket toTicket(TicketDTO ticketDTO){
-        return new Ticket(ticketDTO.getId(), this.userRepository.findById(ticketDTO.getUser()).orElseThrow(() -> new NullPointerException("User not found")), this.matchRepository.findById(ticketDTO.getMatch()).orElseThrow(() -> new NullPointerException("Match not found")));
+        return new Ticket(ticketDTO.getId(), this.userRepository.findById(ticketDTO.getUserId()).orElseThrow(() -> new NullPointerException("User not found")), this.matchRepository.findById(ticketDTO.getMatchId()).orElseThrow(() -> new NullPointerException("Match not found")));
     }
 
     public List<Ticket> toTicket(List<TicketDTO> ticketDTOS){

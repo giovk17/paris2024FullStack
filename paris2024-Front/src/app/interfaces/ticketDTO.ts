@@ -3,3 +3,8 @@ export interface TicketDTO {
   userId: number;
   matchId: number;
 }
+
+export interface CreateTicketDTO {
+  userId: number;
+  matchId: number;
+}

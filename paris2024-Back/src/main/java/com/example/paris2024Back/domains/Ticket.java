@@ -29,4 +29,9 @@ public class Ticket {
     @JoinColumn(name = "MATCH_ID", nullable = false)
     @NotNull(message = "Match id is required")
     private Match match;
+
+    public Ticket(User user, Match match){
+        this.user = user;
+        this.match = match;
+    }
 }

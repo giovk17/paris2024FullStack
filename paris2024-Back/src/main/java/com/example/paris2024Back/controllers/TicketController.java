@@ -1,8 +1,11 @@
 package com.example.paris2024Back.controllers;
 
+import com.example.paris2024Back.dtos.CreateTicketDTO;
 import com.example.paris2024Back.dtos.TicketDTO;
 import com.example.paris2024Back.services.TicketService;
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +19,7 @@ import java.util.List;
 public class TicketController {
 
     private final TicketService ticketService;
+    private final Logger logger = LoggerFactory.getLogger(TicketController.class);
 
     @GetMapping(produces = "application/json")
     @ResponseStatus(HttpStatus.OK)
@@ -33,8 +37,8 @@ public class TicketController {
     }
 
     @PostMapping(path = "/create", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<TicketDTO> createTicket(@RequestBody TicketDTO ticketDTO){
-        this.ticketService.createTicket(ticketDTO);
-        return new ResponseEntity<>(ticketDTO, HttpStatus.CREATED);
+    public ResponseEntity<CreateTicketDTO> createTicket(@RequestBody CreateTicketDTO createTicketDTO) throws Exception {
+        this.ticketService.createTicket(createTicketDTO);
+        return new ResponseEntity<>(createTicketDTO, HttpStatus.CREATED);
     }
 }

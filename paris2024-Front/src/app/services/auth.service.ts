@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
-import { UserDTO } from '../interfaces/userDTO';
+import { UserDTO, userRole } from '../interfaces/userDTO';
 import { DataService } from './data.service';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  UserObserver = new BehaviorSubject<UserDTO>(null);
+  $user = this.UserObserver.asObservable();
   currentUser: UserDTO | null = null;
 
   constructor(private data: DataService) {}
@@ -15,10 +17,11 @@ export class AuthService {
 
   public setUser(user: UserDTO) {
     this.currentUser = user;
+    this.UserObserver.next(this.currentUser);
   }
 
-  public getUser() {
-    return this.currentUser;
+  public isAdmin() {
+    return this.currentUser.userRole == userRole.Admin;
   }
 
   public clearUser() {
@@ -30,6 +33,15 @@ export class AuthService {
   }
 
   // USER RELATED HTTP METHODS
+
+  public getUserById(id: number) {
+    this.data.makeHttpRequest<UserDTO>('get', `user/${id}`).subscribe({
+      next: (user) => {
+        this.currentUser = user;
+        this.UserObserver.next(this.currentUser);
+      },
+    });
+  }
 
   public getAllUsers(): Observable<UserDTO[]> {
     return this.data.makeHttpRequest<UserDTO[]>('get', 'user');

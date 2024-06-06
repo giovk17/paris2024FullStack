@@ -1,12 +1,7 @@
 <div class="wrapper">
   <div class="matchTableWrapper">
+    <h1>{{ sportTitle }}</h1>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-      <!-- Sport Column -->
-      <ng-container matColumnDef="sport">
-        <th mat-header-cell *matHeaderCellDef>Sport</th>
-        <td mat-cell *matCellDef="let element">{{ element.sport }}</td>
-      </ng-container>
-
       <ng-container matColumnDef="date">
         <th mat-header-cell *matHeaderCellDef>Start Date</th>
         <td mat-cell *matCellDef="let element">{{ element.date }}</td>

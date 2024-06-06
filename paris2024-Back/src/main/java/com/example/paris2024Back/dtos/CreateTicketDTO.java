@@ -5,14 +5,11 @@ import lombok.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
 @ToString
 @EqualsAndHashCode
-public class TicketDTO {
-
-    private Long id;
-
+@Getter
+@Setter
+public class CreateTicketDTO {
 
     @NotNull(message = "User id is required")
     private Long userId;

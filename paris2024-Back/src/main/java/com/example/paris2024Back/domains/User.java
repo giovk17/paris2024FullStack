@@ -41,9 +41,7 @@ public class User {
     private List<Ticket> ownedTickets;
 
     public void purchaseTicket(Ticket ticket){
-        if(!this.ownedTickets.contains(ticket)){
-            ownedTickets.add(ticket);
-        }
+        ownedTickets.add(ticket);
     }
 
 
