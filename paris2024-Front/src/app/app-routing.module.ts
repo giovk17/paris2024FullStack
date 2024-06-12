@@ -7,6 +7,7 @@ import { SportsComponent } from './sports/sports.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MatchComponent } from './match/match.component';
 import { DetailComponent } from './detail/detail.component';
+import { TicketsComponent } from './tickets/tickets.component';
 
 const routes: Routes = [
   { path: 'login', component: AuthComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
       { path: 'sports/:sport', component: MatchComponent },
       { path: 'sports/details/:id', component: DetailComponent },
       { path: 'profile', component: ProfileComponent },
+      { path: 'profile/tickets', component: TicketsComponent },
       { path: '', redirectTo: 'sports', pathMatch: 'full' },
     ],
   },

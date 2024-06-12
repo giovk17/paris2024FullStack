@@ -3,6 +3,7 @@ import { AuthService } from '../services/auth.service';
 import { UserDTO } from '../interfaces/userDTO';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -18,7 +19,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   private authSub: Subscription;
 
-  constructor(private auth: AuthService) {}
+  constructor(private auth: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.authSub = this.auth.$user.subscribe({
@@ -40,6 +41,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
       this.hiddenPassword = Array.from(this.passwordArr, () => '*').join('');
     }
     this.pwShowMode = !this.pwShowMode;
+  }
+
+  toTickets() {
+    this.router.navigate([`main/profile/tickets`]);
   }
 
   changeDetails(form: NgForm) {}

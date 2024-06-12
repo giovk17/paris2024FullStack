@@ -20,6 +20,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { AuthRoutingService } from './services/auth.routing.service';
 import { MatchComponent } from './match/match.component';
 import { DetailComponent } from './detail/detail.component';
+import { TicketsComponent } from './tickets/tickets.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { DetailComponent } from './detail/detail.component';
     ProfileComponent,
     MatchComponent,
     DetailComponent,
+    TicketsComponent,
   ],
   imports: [
     BrowserModule,
