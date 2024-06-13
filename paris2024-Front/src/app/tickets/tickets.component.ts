@@ -4,6 +4,7 @@ import { UserDTO } from '../interfaces/userDTO';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatchService } from '../services/match.service';
 import { MatchDTO } from '../interfaces/matchDTO';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tickets',
@@ -15,7 +16,11 @@ export class TicketsComponent implements OnInit {
   private userMatches = [];
   public dataSource = new MatTableDataSource<any>();
   public displayedColumns = ['matchId', 'sport', 'price', 'amount', 'toMatch'];
-  constructor(private auth: AuthService, private matchService: MatchService) {}
+  constructor(
+    private auth: AuthService,
+    private matchService: MatchService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.auth.$user.subscribe({
@@ -38,7 +43,20 @@ export class TicketsComponent implements OnInit {
             }
           }
         }
+        this.userMatches.forEach((match) =>
+          this.dataSource.data.push({
+            matchId: match.id,
+            sport: match.sportName,
+            price: match.ticketPrice,
+            amount: match.amount,
+          })
+        );
       },
     });
+  }
+
+  public toMatch(element) {
+    const id = element.matchId;
+    this.router.navigate([`main/sports/details/${id}`]);
   }
 }

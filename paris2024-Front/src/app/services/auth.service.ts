@@ -15,16 +15,16 @@ export class AuthService {
 
   // USER RELATED AUTH METHODS
 
-  public setUser(user: UserDTO) {
+  public setUser(user: UserDTO): void {
     this.currentUser = user;
     this.UserObserver.next(this.currentUser);
   }
 
-  public isAdmin() {
+  public isAdmin(): boolean {
     return this.currentUser.userRole == userRole.Admin;
   }
 
-  public clearUser() {
+  public clearUser(): void {
     this.currentUser = null;
   }
 
